@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>chLocalData Demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container" ng-app="ch.Demo" ng-controller="chDemoController">
+      <div class="row">
+        <div class="col-xs-12">
+          <br />
+          <br />
+          <br />
+          <br />
+          <p>LocalData property foo: {{foo}}</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      ch = {
+        localData: {
+          foo: 'bar'
+        }
+      };
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="dist/lodash.min.js"></script>
+    <script src="dist/lodash_module.min.js"></script>
+    <script src="dist/chLocalData.js"></script>
+    <script>
+      angular.module('ch.Demo', ['ch.LocalData'])
+      .config(function(localDataProvider) {
+        localDataProvider.setNameSpace('ch');
+      })
+      .controller('chDemoController', function($scope, localData) {
+        $scope.foo = localData('foo');
+      });
+    </script>
+  </body>
+</html>

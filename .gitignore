@@ -1,0 +1,4 @@
+node_modules/
+.sass-cache/
+spec/reports/
+.DS_Store
